@@ -42,71 +42,6 @@ If you have a bash-compatible shell you can run the script directly:
     sh <(curl https://j.mp/spf13-vim3 -L)
 ```
 
-## Installing on Windows
-
-On Windows and \*nix [Git] and [Curl] are required. Also, if you haven't done so already, you'll need to install [Vim].
-The quickest option to install all three dependencies ([Git], [Curl], [Vim] and [spf13-vim]) is via [Chocolatey] NuGet. After installing [Chocolatey], execute the following commands on the _command prompt_:
-
-    C:\> choco install spf13-vim
-
-_Note: The [spf13-vim package] will install Vim also!_
-
-If you want to install [msysgit], [Curl] and [spf13-vim] individually, follow the directions below.
-
-### Installing dependencies
-
-#### Install [Vim]
-
-After the installation of Vim you must add a new directory to your environment variables path to make it work with the script installation of spf13.
-
-Open Vim and write the following command, it will show the installed directory:
-
-    :echo $VIMRUNTIME
-    C:\Program Files (X86)\Vim\vim74
-
-Then you need to add it to your environment variable path. After that try execute `vim` within command prompt (press Win-R, type `cmd`, press Enter) and you’ll see the default vim page.
-
-#### Install [msysgit]
-
-After installation try running `git --version` within _command prompt_ (press Win-R,  type `cmd`, press Enter) to make sure all good:
-
-    C:\> git --version
-    git version 1.7.4.msysgit.0
-
-#### Setup [Curl]
-_Instructions blatently copied from vundle readme_
-Installing Curl on Windows is easy as [Curl] is bundled with [msysgit]!
-But before it can be used with [Vundle] it's required make `curl` run in _command prompt_.
-The easiest way is to create `curl.cmd` with [this content](https://gist.github.com/912993)
-
-    @rem Do not use "echo off" to not affect any child calls.
-    @setlocal
-
-    @rem Get the abolute path to the parent directory, which is assumed to be the
-    @rem Git installation root.
-    @for /F "delims=" %%I in ("%~dp0..") do @set git_install_root=%%~fI
-    @set PATH=%git_install_root%\bin;%git_install_root%\mingw\bin;%PATH%
-
-    @if not exist "%HOME%" @set HOME=%HOMEDRIVE%%HOMEPATH%
-    @if not exist "%HOME%" @set HOME=%USERPROFILE%
-
-    @curl.exe %*
-
-
-And copy it to `C:\Program Files\Git\cmd\curl.cmd`, assuming [msysgit] was installed to `c:\Program Files\Git`
-
-to verify all good, run:
-
-    C:\> curl --version
-    curl 7.21.1 (i686-pc-mingw32) libcurl/7.21.1 OpenSSL/0.9.8k zlib/1.2.3
-    Protocols: dict file ftp ftps http https imap imaps ldap ldaps pop3 pop3s rtsp smtp smtps telnet tftp
-    Features: Largefile NTLM SSL SSPI libz
-
-
-#### Installing spf13-vim on Windows
-
-The easiest way is to download and run the spf13-vim-windows-install.cmd file. Remember to run this file in **Administrator Mode** if you want the symlinks to be created successfully.
-
 ## Updating to the latest version
 The simpliest (and safest) way to update is to simply rerun the installer. It will completely and non destructively upgrade to the latest version.
 
@@ -387,20 +322,6 @@ file
 
 ![fugitive image][fugitive-img]
 
-## [PIV]
-
-The most feature complete and up to date PHP Integration for Vim with proper support for PHP 5.3+ including latest syntax, functions, better fold support, etc.
-
-PIV provides:
-
- * PHP 5.3 support
- * Auto generation of PHP Doc (,pd on (function, variable, class) definition line)
- * Autocomplete of classes, functions, variables, constants and language keywords
- * Better indenting
- * Full PHP documentation manual (hit K on any function for full docs)
-
-![php vim itegration image][phpmanual-img]
-
 ## [Ack.vim]
 
 Ack.vim uses ack to search inside the current directory for a pattern.
@@ -534,7 +455,6 @@ Here's some tips if you've never used VIM before:
 [contributors]:https://github.com/spf13/spf13-vim/contributors
 
 [Vundle]:https://github.com/gmarik/vundle
-[PIV]:https://github.com/spf13/PIV
 [NERDCommenter]:https://github.com/scrooloose/nerdcommenter
 [Undotree]:https://github.com/mbbill/undotree
 [NERDTree]:https://github.com/scrooloose/nerdtree
